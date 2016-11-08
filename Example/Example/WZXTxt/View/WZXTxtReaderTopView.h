@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WZXTxtReaderTopView.h
 //  Example
 //
 //  Created by WzxJiang on 16/11/8.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WZXTxtReaderTopView : UIView
 
 @end
-

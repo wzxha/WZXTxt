@@ -9,7 +9,6 @@
 #import "WZXTxtPageViewController.h"
 #import "WZXTxtViewController.h"
 #import "WZXTxtAnalyse.h"
-#import "Masonry.h"
 
 @interface WZXTxtPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 

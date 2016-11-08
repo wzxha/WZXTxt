@@ -45,6 +45,8 @@
         make.bottom.equalTo(self.view).offset(-10);
     }];
     
+    [_textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendChangeNavStateNoti)]];
+    
     _numLabel = [UILabel new];
     _numLabel.font = [UIFont systemFontOfSize:10];
     _numLabel.textColor = [UIColor grayColor];
@@ -55,7 +57,13 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self sendChangeNavStateNoti];
+}
 
+- (void)sendChangeNavStateNoti {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTxtChangeNavNotification" object:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

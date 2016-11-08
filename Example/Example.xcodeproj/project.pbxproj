@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1EDD43C61DD179D80012517E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD43C51DD179D80012517E /* main.m */; };
 		1EDD43C91DD179D80012517E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD43C81DD179D80012517E /* AppDelegate.m */; };
-		1EDD43CF1DD179D80012517E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD43CD1DD179D80012517E /* Main.storyboard */; };
 		1EDD43D11DD179D80012517E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD43D01DD179D80012517E /* Assets.xcassets */; };
 		1EDD43D41DD179D80012517E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD43D21DD179D80012517E /* LaunchScreen.storyboard */; };
 		1EDD43DF1DD179D80012517E /* ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD43DE1DD179D80012517E /* ExampleUITests.m */; };
@@ -27,7 +26,9 @@
 		1EDD44161DD17A2E0012517E /* WZXTxtPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD44121DD17A2E0012517E /* WZXTxtPageViewController.m */; };
 		1EDD44171DD17A2E0012517E /* WZXTxtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD44141DD17A2E0012517E /* WZXTxtViewController.m */; };
 		1EDD441A1DD17A550012517E /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1EDD44191DD17A550012517E /* mdjyml.txt */; };
-		1EDD441C1DD17A760012517E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD441B1DD17A760012517E /* ViewController.m */; };
+		1EDD441C1DD17A760012517E /* WZXTxtReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD441B1DD17A760012517E /* WZXTxtReaderViewController.m */; };
+		1EDD44201DD1A2310012517E /* WZXTxtReaderBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD441F1DD1A2310012517E /* WZXTxtReaderBottomView.m */; };
+		1EDD44231DD1A3690012517E /* WZXTxtReaderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD44221DD1A3690012517E /* WZXTxtReaderTopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +46,7 @@
 		1EDD43C51DD179D80012517E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1EDD43C71DD179D80012517E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1EDD43C81DD179D80012517E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1EDD43CA1DD179D80012517E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1EDD43CE1DD179D80012517E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1EDD43CA1DD179D80012517E /* WZXTxtReaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WZXTxtReaderViewController.h; sourceTree = "<group>"; };
 		1EDD43D01DD179D80012517E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EDD43D31DD179D80012517E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EDD43D51DD179D80012517E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,7 +85,11 @@
 		1EDD44131DD17A2E0012517E /* WZXTxtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXTxtViewController.h; sourceTree = "<group>"; };
 		1EDD44141DD17A2E0012517E /* WZXTxtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTxtViewController.m; sourceTree = "<group>"; };
 		1EDD44191DD17A550012517E /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
-		1EDD441B1DD17A760012517E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1EDD441B1DD17A760012517E /* WZXTxtReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTxtReaderViewController.m; sourceTree = "<group>"; };
+		1EDD441E1DD1A2310012517E /* WZXTxtReaderBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXTxtReaderBottomView.h; sourceTree = "<group>"; };
+		1EDD441F1DD1A2310012517E /* WZXTxtReaderBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTxtReaderBottomView.m; sourceTree = "<group>"; };
+		1EDD44211DD1A3690012517E /* WZXTxtReaderTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXTxtReaderTopView.h; sourceTree = "<group>"; };
+		1EDD44221DD1A3690012517E /* WZXTxtReaderTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTxtReaderTopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +136,8 @@
 				1EDD43E91DD17A250012517E /* Vendors */,
 				1EDD43C71DD179D80012517E /* AppDelegate.h */,
 				1EDD43C81DD179D80012517E /* AppDelegate.m */,
-				1EDD43CA1DD179D80012517E /* ViewController.h */,
-				1EDD441B1DD17A760012517E /* ViewController.m */,
-				1EDD43CD1DD179D80012517E /* Main.storyboard */,
+				1EDD43CA1DD179D80012517E /* WZXTxtReaderViewController.h */,
+				1EDD441B1DD17A760012517E /* WZXTxtReaderViewController.m */,
 				1EDD43D01DD179D80012517E /* Assets.xcassets */,
 				1EDD43D21DD179D80012517E /* LaunchScreen.storyboard */,
 				1EDD43D51DD179D80012517E /* Info.plist */,
@@ -203,6 +206,7 @@
 		1EDD440E1DD17A2E0012517E /* WZXTxt */ = {
 			isa = PBXGroup;
 			children = (
+				1EDD441D1DD1A21D0012517E /* View */,
 				1EDD440F1DD17A2E0012517E /* WZXTxtAnalyse.h */,
 				1EDD44101DD17A2E0012517E /* WZXTxtAnalyse.m */,
 				1EDD44111DD17A2E0012517E /* WZXTxtPageViewController.h */,
@@ -219,6 +223,17 @@
 				1EDD44191DD17A550012517E /* mdjyml.txt */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		1EDD441D1DD1A21D0012517E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EDD441E1DD1A2310012517E /* WZXTxtReaderBottomView.h */,
+				1EDD441F1DD1A2310012517E /* WZXTxtReaderBottomView.m */,
+				1EDD44211DD1A3690012517E /* WZXTxtReaderTopView.h */,
+				1EDD44221DD1A3690012517E /* WZXTxtReaderTopView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +323,6 @@
 				1EDD43D41DD179D80012517E /* LaunchScreen.storyboard in Resources */,
 				1EDD441A1DD17A550012517E /* mdjyml.txt in Resources */,
 				1EDD43D11DD179D80012517E /* Assets.xcassets in Resources */,
-				1EDD43CF1DD179D80012517E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDD44201DD1A2310012517E /* WZXTxtReaderBottomView.m in Sources */,
 				1EDD440B1DD17A250012517E /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				1EDD44091DD17A250012517E /* MASViewConstraint.m in Sources */,
 				1EDD44041DD17A250012517E /* MASCompositeConstraint.m in Sources */,
@@ -336,9 +351,10 @@
 				1EDD43C61DD179D80012517E /* main.m in Sources */,
 				1EDD44171DD17A2E0012517E /* WZXTxtViewController.m in Sources */,
 				1EDD440D1DD17A250012517E /* ViewController+MASAdditions.m in Sources */,
-				1EDD441C1DD17A760012517E /* ViewController.m in Sources */,
+				1EDD441C1DD17A760012517E /* WZXTxtReaderViewController.m in Sources */,
 				1EDD440C1DD17A250012517E /* View+MASAdditions.m in Sources */,
 				1EDD44151DD17A2E0012517E /* WZXTxtAnalyse.m in Sources */,
+				1EDD44231DD1A3690012517E /* WZXTxtReaderTopView.m in Sources */,
 				1EDD44081DD17A250012517E /* MASViewAttribute.m in Sources */,
 				1EDD44051DD17A250012517E /* MASConstraint.m in Sources */,
 				1EDD44061DD17A250012517E /* MASConstraintMaker.m in Sources */,
@@ -364,14 +380,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1EDD43CD1DD179D80012517E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1EDD43CE1DD179D80012517E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1EDD43D21DD179D80012517E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
