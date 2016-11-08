@@ -69,6 +69,8 @@
 //        
 //    }
 //}
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+}
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     NSLog(@"之前章节: %lu, 之前pagenum: %lu", _currentChapterNum, _currentPageNum);
