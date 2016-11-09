@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TxtPageModel;
 
 @interface WZXTxtViewController : UIViewController
 @property (nonatomic, strong) UILabel * chapterLabel;
 @property (nonatomic, strong) UILabel * numLabel;
 @property (nonatomic, strong) UITextView * textView;
-@property (nonatomic, assign) NSUInteger pageNum;
-@property (nonatomic, assign) NSUInteger chapterNum;
+@property (nonatomic, assign, readonly) NSUInteger pageNum;
+@property (nonatomic, assign, readonly) NSUInteger chapterNum;
+
+@property (nonatomic, strong) TxtPageModel * pageModel;
+
 @end

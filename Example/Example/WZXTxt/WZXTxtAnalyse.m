@@ -10,6 +10,7 @@
 #import <CoreText/CTFramesetter.h>
 @implementation WZXTxtAnalyse {
     NSUInteger _lastLocal;
+    NSUInteger _allPageNums;
 }
 
 - (instancetype)initWithTxtName:(NSString *)name font:(UIFont *)font bounds:(CGRect)bounds {
@@ -51,7 +52,6 @@
                 [self paginateWithChapterModel:chapterModel];
                 [_chapters addObject:chapterModel];
                 _lastLocal = result.range.location;
-            
             }
             
             [_chapterNames addObject:
@@ -110,7 +110,10 @@
 }
 
 - (NSUInteger)allPageNums {
-    return [self pageNumsWithChapterNum:_chapters.count pageNum:0];
+    if (_allPageNums == 0) {
+        _allPageNums = [self pageNumsWithChapterNum:_chapters.count pageNum:0];
+    }
+    return _allPageNums;
 }
 
 - (NSUInteger)pageNumsWithChapterNum:(NSUInteger)chapterNum pageNum:(NSUInteger)pageNum {
@@ -133,5 +136,11 @@
     }
     return self;
 }
+
+@end
+
+@implementation TxtPageModel
+
+
 
 @end
