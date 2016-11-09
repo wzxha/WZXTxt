@@ -1,0 +1,17 @@
+//
+//  pchFile.pch
+//  Example
+//
+//  Created by WzxJiang on 16/11/9.
+//  Copyright © 2016年 WzxJiang. All rights reserved.
+//
+
+#ifndef pchFile_pch
+#define pchFile_pch
+
+#import "Masonry.h"
+#import "WZXConfig.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* pchFile_pch */

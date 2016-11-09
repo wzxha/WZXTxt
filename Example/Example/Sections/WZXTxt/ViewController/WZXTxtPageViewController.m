@@ -22,12 +22,12 @@
     WZXTxtViewController * _txtViewController;
 }
 
-- (instancetype)initWithName:(NSString *)name {
+- (instancetype)initWithAnalyse:(WZXTxtAnalyse *)analyse {
     NSDictionary *options =
     [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
                                 forKey: UIPageViewControllerOptionSpineLocationKey];
     if (self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:options]) {
-        _name = name;
+        _analyse = analyse;
         [self setUp];
     }
     return self;
@@ -36,18 +36,19 @@
 - (void)setUp {
     self.delegate = self;
     self.dataSource = self;
-    
-    _analyse =
-    [[WZXTxtAnalyse alloc] initWithTxtName:_name
-                                      font:[UIFont systemFontOfSize:13]
-                                    bounds:
-     CGRectMake(0, 0, self.view.frame.size.width - 20, self.view.frame.size.height - 120)];
-    
+}
+
+- (void)install {
     [self setViewControllers:@[[self txtViewControllerWithPageNum:_currentPageNum chapterNum:_currentChapterNum]]
-                   direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-        
-    }];
-    
+                   direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+                       
+                   }];
+}
+
+- (void)toPageWithChapterNum:(NSUInteger)chapterNum pageNum:(NSUInteger)pageNum {
+    _currentChapterNum = chapterNum;
+    _currentPageNum = pageNum;
+    [self install];
 }
 
 - (void)viewDidLoad {
@@ -70,6 +71,14 @@
         _currentPageNum = _txtViewController.pageNum;
         
         _currentChapterNum = _txtViewController.chapterNum;
+        
+        [[NSUserDefaults standardUserDefaults]
+         setObject:@{@"chapter": @(_currentChapterNum),
+                     @"page": @(_currentPageNum)}
+         forKey: [NSString stringWithFormat:@"%@", _analyse.name]];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
     } else {
         _currentPageNum = _pageNumChange;
         
@@ -78,6 +87,7 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(1)}];
     
     WZXTxtViewController * txtVC = (WZXTxtViewController *)pendingViewControllers.firstObject;
     

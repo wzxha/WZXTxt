@@ -20,7 +20,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[WZXTxtReaderViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[WZXTxtReaderViewController alloc] initWithName:@"mdjyml"]];
     return YES;
 }
 

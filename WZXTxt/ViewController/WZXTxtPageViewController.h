@@ -16,3 +16,9 @@
 - (instancetype)initWithName:(NSString *)name;
 
 @end
+
+@protocol WZXTxtPageViewControllerDelegate <NSObject>
+
+- (void)txtPageViewController:(WZXTxtPageViewController *)txtPageViewController ;
+
+@end

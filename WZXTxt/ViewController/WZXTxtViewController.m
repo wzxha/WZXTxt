@@ -25,7 +25,7 @@
     [_chapterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(30);
         make.left.equalTo(self.view).offset(10);
-        make.height.equalTo(@(8));
+        make.height.equalTo(@(_pageModel.pageNum == 0 ? 0: 8));
     }];
     
     _textView = [UITextView new];
@@ -36,7 +36,6 @@
     
     _textView.editable       = NO;
     _textView.scrollEnabled  = NO;
-    _textView.font           = [UIFont systemFontOfSize:13];
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_chapterLabel.mas_bottom).offset(5);
         make.left.equalTo(self.view).offset(10);
@@ -55,14 +54,6 @@
     }];
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    [self sendChangeNavStateNoti];
-//}
-
-- (void)sendChangeNavStateNoti {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTxtChangeNavNotification" object:nil];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -72,11 +63,11 @@
     
     [self setUp];
     
-    _chapterLabel.text      = _pageModel.chapterName;
+    _chapterLabel.text       = _pageModel.chapterName;
     
     _textView.attributedText = _pageModel.attributedString;
 
-    _numLabel.text      =
+    _numLabel.text           =
     [NSString stringWithFormat:@"%lu/%lu", _pageModel.currentPageNum, _pageModel.allPageNums];
 }
 

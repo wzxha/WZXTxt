@@ -8,15 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WZXTxtAnalyseDelegate <NSObject>
+
+// 分析完毕
+- (void)txtAnalyseDidAnalyse;
+
+@end
+
 @interface WZXTxtAnalyse : NSObject
 
 @property (nonatomic, assign) CGRect bounds;
+@property (nonatomic, copy, readonly) NSString * name;
 @property (nonatomic, strong) NSMutableArray * chapterNames;
 @property (nonatomic, strong) NSMutableArray * chapters;
+@property (nonatomic, weak) id <WZXTxtAnalyseDelegate> delegate;
 
-- (instancetype)initWithTxtName:(NSString *)name
-                           font:(UIFont *)font
-                         bounds:(CGRect)bounds;
+// 初始化
+- (instancetype)initWithBounds:(CGRect)bounds;
+
+// 分析
+- (void)contentWithName:(NSString *)name font:(UIFont *)font;
+
 
 - (NSAttributedString *)txtWithPageNum:(NSUInteger)pageNum
                             chapterNum:(NSUInteger)chapterNum;

@@ -7,7 +7,7 @@
 //
 
 #import "WZXTxtViewController.h"
-#import "Masonry.h"
+#import "WZXTxtAnalyse.h"
 
 @interface WZXTxtViewController ()
 
@@ -15,51 +15,79 @@
 
 @implementation WZXTxtViewController 
 
-- (instancetype)init {
-    if (self = [super init]) {
-        [self setUp];
-    }
-    return self;
-}
-
 - (void)setUp {
     _chapterLabel = [UILabel new];
-    _chapterLabel.font = [UIFont systemFontOfSize:10];
-    _chapterLabel.textColor = [UIColor grayColor];
     [self.view addSubview:_chapterLabel];
+    
+    _chapterLabel.font      = [UIFont systemFontOfSize:10];
+    _chapterLabel.textColor = [UIColor grayColor];
     [_chapterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(10);
+        make.top.equalTo(self.view).offset(30);
         make.left.equalTo(self.view).offset(10);
-        make.height.equalTo(@(8));
+        if (_pageModel.pageNum == 0) {
+            make.height.equalTo(@(0));
+        } else {
+            make.height.lessThanOrEqualTo(@(15));
+        }
     }];
     
     _textView = [UITextView new];
     [self.view addSubview:self.textView];
-    _textView.editable = NO;
-    _textView.scrollEnabled = NO;
-    _textView.font = [UIFont systemFontOfSize:13];
+    
+    [_textView addGestureRecognizer:
+     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReaderAction)]];
+    
+    _textView.editable       = NO;
+//    _textView.scrollEnabled  = NO;
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_chapterLabel.mas_bottom).offset(5);
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
-        make.bottom.equalTo(self.view).offset(-10);
     }];
     
     _numLabel = [UILabel new];
-    _numLabel.font = [UIFont systemFontOfSize:10];
-    _numLabel.textColor = [UIColor grayColor];
     [self.view addSubview:_numLabel];
+    
+    _numLabel.font      = [UIFont systemFontOfSize:10];
+    _numLabel.textColor = [UIColor grayColor];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_textView.mas_bottom).offset(5);
         make.bottom.equalTo(self.view).offset(-5);
         make.right.equalTo(self.view).offset(-10);
     }];
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+}
+
+- (void)tapReaderAction {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(0)}];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self tapReaderAction];
+}
+
+- (void)setPageModel:(TxtPageModel *)pageModel {
+    _pageModel = pageModel;
+    
+    [self setUp];
+    
+    _chapterLabel.text       = _pageModel.chapterName;
+    
+    _textView.attributedText = _pageModel.attributedString;
+
+    _numLabel.text           =
+    [NSString stringWithFormat:@"%lu/%lu", _pageModel.currentPageNum, _pageModel.allPageNums];
+}
+
+- (NSUInteger)pageNum {
+    return _pageModel.pageNum;
+}
+
+- (NSUInteger)chapterNum {
+    return _pageModel.chapterNum;
 }
 
 - (void)didReceiveMemoryWarning {

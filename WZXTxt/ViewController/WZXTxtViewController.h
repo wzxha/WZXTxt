@@ -19,3 +19,10 @@
 @property (nonatomic, strong) TxtPageModel * pageModel;
 
 @end
+
+
+@protocol WZXTxtViewControllerDelegate <NSObject>
+
+- (void)txtReaderViewController:(WZXTxtViewController *)txtReaderViewController ;
+
+@end
