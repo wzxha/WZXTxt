@@ -15,6 +15,7 @@
 
 @implementation WZXCatalogueViewController {
     UIControl * _backgroundControl;
+    UIView * _contentView;
 }
 
 - (void)viewDidLoad {
@@ -22,46 +23,41 @@
     [self createUI];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)createUI {
+    self.view.alpha = 0;
+    
     _backgroundControl = [UIControl new];
     [self.view addSubview:_backgroundControl];
     
-    _backgroundControl.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
-    _backgroundControl.alpha = 0;
+    _backgroundControl.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
     [_backgroundControl addTarget:self action:@selector(hideCatalogue) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
-    UIView * contentView = [UIView new];
-    [self.view addSubview:contentView];
+    _contentView = [UIView new];
+    [self.view addSubview:_contentView];
 
-    contentView.backgroundColor = [UIColor whiteColor];
-    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.width.equalTo(@(250));
-        make.bottom.equalTo(self.view);
-    }];
+    _contentView.backgroundColor = [UIColor whiteColor];
+    _contentView.frame = CGRectMake(-self.view.frame.size.width - 100, 0, self.view.frame.size.width - 100, self.view.frame.size.height);
     
     _tableView = [[UITableView alloc] initWithFrame: CGRectZero];
-    [contentView addSubview:_tableView];
+    [_contentView addSubview:_tableView];
 
     _tableView.dataSource = self;
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 5, 0, 5);
     [_tableView registerClass:[WZXTxtCatalogueCell class] forCellReuseIdentifier:@"WZXTxtCatalogueCell"];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(contentView).offset(20);
-        make.left.equalTo(contentView).offset(5);
-        make.right.equalTo(contentView).offset(-5);
-        make.bottom.equalTo(contentView);
+        make.top.equalTo(_contentView).offset(20);
+        make.left.equalTo(_contentView).offset(5);
+        make.right.equalTo(_contentView).offset(-5);
+        make.bottom.equalTo(_contentView);
     }];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WZXTxtCatalogueCell * cell =
-    [tableView dequeueReusableCellWithIdentifier:@"WZXTxtCatalogueCell"];
-    cell.chapterLabel.text = _chapterNames[indexPath.row];
-    return cell;
 }
 
 - (void)setChapterNames:(NSArray *)chapterNames {
@@ -69,6 +65,7 @@
     [_tableView reloadData];
 }
 
+// 滑动到当前章节
 - (void)setCurrentChapterNum:(NSUInteger)currentChapterNum {
     _currentChapterNum = currentChapterNum;
     if (_currentChapterNum == 0) return;
@@ -77,39 +74,39 @@
      [NSIndexPath indexPathForRow:currentChapterNum inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _chapterNames.count;
-}
-
 - (void)showCatalogue {
+    self.view.alpha = 1;
     [UIView animateWithDuration:0.3 animations:^{
-        CGRect rect = self.view.frame;
+        CGRect rect = _contentView.frame;
         rect.origin.x = 0;
-        self.view.frame = rect;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2 animations:^{
-            _backgroundControl.alpha = 1;
-        }];
+        _contentView.frame = rect;
+        _backgroundControl.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     }];
 }
 
 - (void)hideCatalogue {
-    [UIView animateWithDuration:0.2 animations:^{
-        _backgroundControl.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        _backgroundControl.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+        CGRect rect = _contentView.frame;
+        rect.origin.x = -rect.size.width;
+        _contentView.frame = rect;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3 animations:^{
-            CGRect rect = self.view.frame;
-            rect.origin.x = -[UIScreen mainScreen].bounds.size.width;
-            self.view.frame = rect;
-        }];
+        self.view.alpha = 0;
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDataSource 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WZXTxtCatalogueCell * cell =
+    [tableView dequeueReusableCellWithIdentifier:@"WZXTxtCatalogueCell"];
+    cell.chapterLabel.text = _chapterNames[indexPath.row];
+    return cell;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _chapterNames.count;
+}
 /*
 #pragma mark - Navigation
 

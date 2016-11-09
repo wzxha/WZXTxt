@@ -38,7 +38,7 @@
     
     _analyse =
     [[WZXTxtAnalyse alloc] initWithBounds:
-     CGRectMake(0, 0, self.view.frame.size.width - 20, self.view.frame.size.height - 100)];
+     CGRectMake(0, 0, self.view.frame.size.width - 20, self.view.frame.size.height - 120)];
     _analyse.delegate = self;
     [_analyse contentWithName:_name font:BASE_BODY_FONT];
 }
@@ -73,7 +73,7 @@
     [self.view addSubview:_bottomView];
     
     _catalogueViewController = [WZXCatalogueViewController new];
-    _catalogueViewController.view.frame = CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+    _catalogueViewController.view.frame = self.view.bounds;
     _catalogueViewController.chapterNames = _analyse.chapterNames;
     _catalogueViewController.tableView.delegate = self;
     _catalogueViewController.currentChapterNum = [bookRecord[@"chapter"] unsignedIntegerValue];
@@ -90,6 +90,9 @@
         [self setNavState:!_showNav];
     } else if (type == 1) {
         // 滑动
+        if (!_showNav) {
+            return;
+        }
         [self setNavState:NO];
     }
 }
@@ -114,13 +117,14 @@
     }];
 }
 
-#pragma mark - delegate
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setNavState:NO];
     [_catalogueViewController hideCatalogue];
     [_txtPageViewController toPageWithChapterNum:indexPath.row pageNum:0];
 }
 
+#pragma mark - WZXTxtAnalyseDelegate
 - (void)txtAnalyseDidAnalyse {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self createUI];

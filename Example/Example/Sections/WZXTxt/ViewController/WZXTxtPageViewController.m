@@ -10,7 +10,7 @@
 #import "WZXTxtViewController.h"
 #import "WZXTxtAnalyse.h"
 
-@interface WZXTxtPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@interface WZXTxtPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, WZXTxtViewControllerDelegate>
 
 @end
 
@@ -22,6 +22,7 @@
     WZXTxtViewController * _txtViewController;
 }
 
+#pragma mark - left cycle
 - (instancetype)initWithAnalyse:(WZXTxtAnalyse *)analyse {
     NSDictionary *options =
     [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
@@ -31,6 +32,15 @@
         [self setUp];
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)setUp {
@@ -45,11 +55,15 @@
                    }];
 }
 
+
+
 - (void)toPageWithChapterNum:(NSUInteger)chapterNum pageNum:(NSUInteger)pageNum {
     _currentChapterNum = chapterNum;
     _currentPageNum = pageNum;
+    
     [self install];
     
+    //TODO: - 存储读到的位置
     [[NSUserDefaults standardUserDefaults]
      setObject:@{@"chapter": @(_currentChapterNum),
                  @"page": @(_currentPageNum)}
@@ -58,18 +72,29 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+- (WZXTxtViewController *)txtViewControllerWithPageNum:(NSUInteger)pageNum chapterNum:(NSUInteger)chapterNum {
+    _txtViewController = [WZXTxtViewController new];
     
+    _txtViewController.delegate = self;
     
+    TxtPageModel * pageModel   = [TxtPageModel new];
+    pageModel.currentPageNum   =
+    [_analyse pageNumsWithChapterNum:_currentChapterNum pageNum:pageNum] + 1;
+    
+    pageModel.allPageNums      = [_analyse allPageNums] + 1;
+    pageModel.pageNum          = pageNum;
+    pageModel.chapterNum       = chapterNum;
+    pageModel.chapterName      = _analyse.chapterNames[chapterNum];
+    pageModel.attributedString =  [_analyse txtWithPageNum:pageNum chapterNum:chapterNum];
+
+    _txtViewController.pageModel = pageModel;
+    return _txtViewController;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma delegate
+
+#pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     if (!completed) {
@@ -84,6 +109,7 @@
         
         _currentChapterNum = _chapterNumChange;
         
+        //TODO: - 存储读到的位置
         [[NSUserDefaults standardUserDefaults]
          setObject:@{@"chapter": @(_currentChapterNum),
                      @"page": @(_currentPageNum)}
@@ -103,6 +129,8 @@
     _pageNumChange    = txtVC.pageNum;
 }
 
+#pragma mark - UIPageViewControllerDataSource
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     
     TxtChapterModel * chapterModel = _analyse.chapters[_currentChapterNum];
@@ -115,7 +143,7 @@
     }
     
     _currentPageNum ++;
-
+    
     if (_currentPageNum >= chapterModel.pageNum) {
         _currentChapterNum ++;
         _currentPageNum = 0;
@@ -143,22 +171,50 @@
                                    chapterNum:_currentChapterNum];
 }
 
-- (WZXTxtViewController *)txtViewControllerWithPageNum:(NSUInteger)pageNum chapterNum:(NSUInteger)chapterNum {
-    _txtViewController = [WZXTxtViewController new];
-    
-    TxtPageModel * pageModel   = [TxtPageModel new];
-    pageModel.currentPageNum   =
-    [_analyse pageNumsWithChapterNum:_currentChapterNum pageNum:pageNum] + 1;
-    
-    pageModel.allPageNums      = [_analyse allPageNums] + 1;
-    pageModel.pageNum          = pageNum;
-    pageModel.chapterNum       = chapterNum;
-    pageModel.chapterName      = _analyse.chapterNames[chapterNum];
-    pageModel.attributedString =  [_analyse txtWithPageNum:pageNum chapterNum:chapterNum];
+#pragma mark - WZXTxtViewControllerDelegate
 
-    _txtViewController.pageModel = pageModel;
-    return _txtViewController;
+- (void)txtViewControllerClickLeft {
+    NSUInteger chapterNum = _currentChapterNum;
+    NSUInteger pageNum    = _currentPageNum;
+    
+    if (pageNum == 0) {
+        if (chapterNum == 0) {
+            return;
+        } else {
+            chapterNum --;
+            TxtChapterModel * chapterModel = _analyse.chapters[chapterNum];
+            pageNum = chapterModel.pageNum - 1;
+        }
+    } else {
+        pageNum --;
+    }
+    
+    [self toPageWithChapterNum:chapterNum pageNum:pageNum];
 }
 
+- (void)txtViewControllerClickRight {
+    NSUInteger chapterNum = _currentChapterNum;
+    NSUInteger pageNum    = _currentPageNum;
+    
+    TxtChapterModel * chapterModel = _analyse.chapters[chapterNum];
+    
+    // 最后一章
+    if (chapterNum == _analyse.chapterNums - 1) {
+        TxtChapterModel * lastChapterModel = _analyse.chapters.lastObject;
+        // 最后一节
+        if (pageNum == lastChapterModel.pageNum - 1) {
+            return;
+        }
+    }
+    
+    pageNum ++;
+    
+    if (pageNum >= chapterModel.pageNum) {
+        chapterNum ++;
+        pageNum = 0;
+    }
+    
+    [self toPageWithChapterNum:chapterNum pageNum:pageNum];
+}
 
 @end

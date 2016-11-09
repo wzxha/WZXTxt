@@ -35,7 +35,7 @@
     [self.view addSubview:self.textView];
     
     [_textView addGestureRecognizer:
-     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReaderAction)]];
+     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReaderAction:)]];
     
     _textView.editable       = NO;
 //    _textView.scrollEnabled  = NO;
@@ -61,13 +61,28 @@
     [super viewDidLoad];
 }
 
-- (void)tapReaderAction {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(0)}];
+- (void)tapReaderAction:(UITapGestureRecognizer *)sender {
+    CGPoint pt = [sender locationInView:self.view];
+    [self judgeClickPoint:pt];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self tapReaderAction];
+    CGPoint pt = [[touches anyObject] locationInView:self.view];
+    [self judgeClickPoint:pt];
 }
+
+- (void)judgeClickPoint:(CGPoint)pt {
+    if (pt.x < 100) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(1)}];
+        [self.delegate txtViewControllerClickLeft];
+    } else if (pt.x > self.view.frame.size.width - 100){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(1)}];
+        [self.delegate txtViewControllerClickRight];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WZXTapReaderNotification" object:nil userInfo:@{@"type": @(0)}];
+    }
+}
+
 
 - (void)setPageModel:(TxtPageModel *)pageModel {
     _pageModel = pageModel;
