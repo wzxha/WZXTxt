@@ -49,6 +49,13 @@
     _currentChapterNum = chapterNum;
     _currentPageNum = pageNum;
     [self install];
+    
+    [[NSUserDefaults standardUserDefaults]
+     setObject:@{@"chapter": @(_currentChapterNum),
+                 @"page": @(_currentPageNum)}
+     forKey: [NSString stringWithFormat:@"%@", _analyse.name]];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)viewDidLoad {
@@ -72,17 +79,17 @@
         
         _currentChapterNum = _txtViewController.chapterNum;
         
+    } else {
+        _currentPageNum = _pageNumChange;
+        
+        _currentChapterNum = _chapterNumChange;
+        
         [[NSUserDefaults standardUserDefaults]
          setObject:@{@"chapter": @(_currentChapterNum),
                      @"page": @(_currentPageNum)}
          forKey: [NSString stringWithFormat:@"%@", _analyse.name]];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-    } else {
-        _currentPageNum = _pageNumChange;
-        
-        _currentChapterNum = _chapterNumChange;
     }
 }
 
