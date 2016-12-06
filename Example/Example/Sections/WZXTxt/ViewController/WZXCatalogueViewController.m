@@ -23,11 +23,6 @@
     [self createUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)createUI {
     self.view.alpha = 0;
     
@@ -73,6 +68,8 @@
     [_tableView scrollToRowAtIndexPath:
      [NSIndexPath indexPathForRow:currentChapterNum inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
 }
+
+#pragma mark - Actions
 
 - (void)showCatalogue {
     self.view.alpha = 1;

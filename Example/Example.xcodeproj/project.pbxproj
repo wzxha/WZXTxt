@@ -12,7 +12,6 @@
 		1E06E3951DD304E70052EC5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E36B1DD304E70052EC5C /* LaunchScreen.storyboard */; };
 		1E06E3961DD304E70052EC5C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E36D1DD304E70052EC5C /* Info.plist */; };
 		1E06E3971DD304E70052EC5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E36E1DD304E70052EC5C /* main.m */; };
-		1E06E3981DD304E70052EC5C /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E3711DD304E70052EC5C /* mdjyml.txt */; };
 		1E06E3991DD304E70052EC5C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E3761DD304E70052EC5C /* MainViewController.m */; };
 		1E06E39A1DD304E70052EC5C /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E37A1DD304E70052EC5C /* MASCompositeConstraint.m */; };
 		1E06E39B1DD304E70052EC5C /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E37D1DD304E70052EC5C /* MASConstraint.m */; };
@@ -32,6 +31,12 @@
 		1E06E3B81DD304FC0052EC5C /* WZXTxtAnalyse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E3B21DD304FC0052EC5C /* WZXTxtAnalyse.m */; };
 		1E06E3BB1DD316640052EC5C /* WZXCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E3BA1DD316640052EC5C /* WZXCatalogueViewController.m */; };
 		1E06E3BE1DD3175E0052EC5C /* WZXTxtCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E3BD1DD3175E0052EC5C /* WZXTxtCatalogueCell.m */; };
+		1E06E4041DD46C960052EC5C /* 30430.epub in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E4011DD46C960052EC5C /* 30430.epub */; };
+		1E06E4051DD46C960052EC5C /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E4021DD46C960052EC5C /* mdjyml.txt */; };
+		1E06E4061DD46C960052EC5C /* 将夜.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E4031DD46C960052EC5C /* 将夜.txt */; };
+		1E06E40A1DD470420052EC5C /* WZXNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E4091DD470420052EC5C /* WZXNavigationView.m */; };
+		1E06E4491DD4983B0052EC5C /* VisHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E4481DD4983B0052EC5C /* VisHUD.m */; };
+		1E06E4811DD5C9C00052EC5C /* WZXTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E4801DD5C9C00052EC5C /* WZXTheme.m */; };
 		1EDD43DF1DD179D80012517E /* ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD43DE1DD179D80012517E /* ExampleUITests.m */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +58,6 @@
 		1E06E36D1DD304E70052EC5C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E06E36E1DD304E70052EC5C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E06E36F1DD304E70052EC5C /* pchFile.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pchFile.pch; sourceTree = "<group>"; };
-		1E06E3711DD304E70052EC5C /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
 		1E06E3751DD304E70052EC5C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		1E06E3761DD304E70052EC5C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		1E06E3791DD304E70052EC5C /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 		1E06E3BA1DD316640052EC5C /* WZXCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXCatalogueViewController.m; sourceTree = "<group>"; };
 		1E06E3BC1DD3175E0052EC5C /* WZXTxtCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXTxtCatalogueCell.h; sourceTree = "<group>"; };
 		1E06E3BD1DD3175E0052EC5C /* WZXTxtCatalogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTxtCatalogueCell.m; sourceTree = "<group>"; };
+		1E06E4011DD46C960052EC5C /* 30430.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = 30430.epub; sourceTree = "<group>"; };
+		1E06E4021DD46C960052EC5C /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
+		1E06E4031DD46C960052EC5C /* 将夜.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "将夜.txt"; sourceTree = "<group>"; };
+		1E06E4081DD470420052EC5C /* WZXNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXNavigationView.h; sourceTree = "<group>"; };
+		1E06E4091DD470420052EC5C /* WZXNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXNavigationView.m; sourceTree = "<group>"; };
+		1E06E4471DD4983B0052EC5C /* VisHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisHUD.h; sourceTree = "<group>"; };
+		1E06E4481DD4983B0052EC5C /* VisHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisHUD.m; sourceTree = "<group>"; };
+		1E06E47F1DD5C9C00052EC5C /* WZXTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZXTheme.h; sourceTree = "<group>"; };
+		1E06E4801DD5C9C00052EC5C /* WZXTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZXTheme.m; sourceTree = "<group>"; };
 		1EDD43C11DD179D80012517E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDD43DA1DD179D80012517E /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDD43DE1DD179D80012517E /* ExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleUITests.m; sourceTree = "<group>"; };
@@ -125,6 +138,7 @@
 		1E06E3671DD304E70052EC5C /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				1E06E4001DD46C960052EC5C /* Resource */,
 				1E06E3681DD304E70052EC5C /* AppDelegate.h */,
 				1E06E3691DD304E70052EC5C /* AppDelegate.m */,
 				1E06E36A1DD304E70052EC5C /* Assets.xcassets */,
@@ -132,20 +146,11 @@
 				1E06E36D1DD304E70052EC5C /* Info.plist */,
 				1E06E36E1DD304E70052EC5C /* main.m */,
 				1E06E36F1DD304E70052EC5C /* pchFile.pch */,
-				1E06E3701DD304E70052EC5C /* Resource */,
 				1E06E3721DD304E70052EC5C /* Sections */,
 				1E06E3771DD304E70052EC5C /* Vendors */,
 				1E06E3921DD304E70052EC5C /* WZXConfig.h */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		1E06E3701DD304E70052EC5C /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				1E06E3711DD304E70052EC5C /* mdjyml.txt */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		1E06E3721DD304E70052EC5C /* Sections */ = {
@@ -160,6 +165,7 @@
 		1E06E3731DD304E70052EC5C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1E06E4071DD4701B0052EC5C /* View */,
 				1E06E3741DD304E70052EC5C /* ViewController */,
 			);
 			path = Main;
@@ -177,6 +183,7 @@
 		1E06E3771DD304E70052EC5C /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				1E06E4461DD4983B0052EC5C /* VisHUD */,
 				1E06E3781DD304E70052EC5C /* Masonry */,
 			);
 			path = Vendors;
@@ -221,6 +228,8 @@
 				1E06E3AA1DD304FC0052EC5C /* ViewController */,
 				1E06E3B11DD304FC0052EC5C /* WZXTxtAnalyse.h */,
 				1E06E3B21DD304FC0052EC5C /* WZXTxtAnalyse.m */,
+				1E06E47F1DD5C9C00052EC5C /* WZXTheme.h */,
+				1E06E4801DD5C9C00052EC5C /* WZXTheme.m */,
 			);
 			path = WZXTxt;
 			sourceTree = "<group>";
@@ -251,6 +260,34 @@
 				1E06E3BA1DD316640052EC5C /* WZXCatalogueViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1E06E4001DD46C960052EC5C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E4011DD46C960052EC5C /* 30430.epub */,
+				1E06E4021DD46C960052EC5C /* mdjyml.txt */,
+				1E06E4031DD46C960052EC5C /* 将夜.txt */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1E06E4071DD4701B0052EC5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E4081DD470420052EC5C /* WZXNavigationView.h */,
+				1E06E4091DD470420052EC5C /* WZXNavigationView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E06E4461DD4983B0052EC5C /* VisHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E4471DD4983B0052EC5C /* VisHUD.h */,
+				1E06E4481DD4983B0052EC5C /* VisHUD.m */,
+			);
+			path = VisHUD;
 			sourceTree = "<group>";
 		};
 		1EDD43B81DD179D80012517E = {
@@ -365,8 +402,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E06E3941DD304E70052EC5C /* Assets.xcassets in Resources */,
-				1E06E3981DD304E70052EC5C /* mdjyml.txt in Resources */,
 				1E06E3951DD304E70052EC5C /* LaunchScreen.storyboard in Resources */,
+				1E06E4061DD46C960052EC5C /* 将夜.txt in Resources */,
+				1E06E4051DD46C960052EC5C /* mdjyml.txt in Resources */,
+				1E06E4041DD46C960052EC5C /* 30430.epub in Resources */,
 				1E06E3961DD304E70052EC5C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,10 +435,13 @@
 				1E06E3971DD304E70052EC5C /* main.m in Sources */,
 				1E06E3991DD304E70052EC5C /* MainViewController.m in Sources */,
 				1E06E39D1DD304E70052EC5C /* MASLayoutConstraint.m in Sources */,
+				1E06E4491DD4983B0052EC5C /* VisHUD.m in Sources */,
 				1E06E3931DD304E70052EC5C /* AppDelegate.m in Sources */,
+				1E06E40A1DD470420052EC5C /* WZXNavigationView.m in Sources */,
 				1E06E3B41DD304FC0052EC5C /* WZXTxtReaderTopView.m in Sources */,
 				1E06E3A31DD304E70052EC5C /* ViewController+MASAdditions.m in Sources */,
 				1E06E3B61DD304FC0052EC5C /* WZXTxtReaderViewController.m in Sources */,
+				1E06E4811DD5C9C00052EC5C /* WZXTheme.m in Sources */,
 				1E06E3B51DD304FC0052EC5C /* WZXTxtPageViewController.m in Sources */,
 				1E06E3A21DD304E70052EC5C /* View+MASAdditions.m in Sources */,
 				1E06E39E1DD304E70052EC5C /* MASViewAttribute.m in Sources */,

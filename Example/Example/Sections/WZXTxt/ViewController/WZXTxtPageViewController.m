@@ -9,6 +9,7 @@
 #import "WZXTxtPageViewController.h"
 #import "WZXTxtViewController.h"
 #import "WZXTxtAnalyse.h"
+#import "WZXTheme.h"
 
 @interface WZXTxtPageViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, WZXTxtViewControllerDelegate>
 
@@ -20,6 +21,7 @@
     NSUInteger _chapterNumChange;
     NSUInteger _pageNumChange;
     WZXTxtViewController * _txtViewController;
+    WZXTheme  * _theme;
 }
 
 #pragma mark - left cycle
@@ -46,6 +48,9 @@
 - (void)setUp {
     self.delegate = self;
     self.dataSource = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTheme:) name:@"WZXChangeThemeNotification" object:nil];
+    _theme = [WZXTheme defaultTheme];
 }
 
 - (void)install {
@@ -76,6 +81,8 @@
 - (WZXTxtViewController *)txtViewControllerWithPageNum:(NSUInteger)pageNum chapterNum:(NSUInteger)chapterNum {
     _txtViewController = [WZXTxtViewController new];
     
+    _txtViewController.theme    = _theme;
+    
     _txtViewController.delegate = self;
     
     TxtPageModel * pageModel   = [TxtPageModel new];
@@ -92,7 +99,14 @@
     return _txtViewController;
 }
 
+#pragma mark - Noti WZXChangeThemeNotification
 
+- (void)changeTheme:(NSNotification *)noti {
+    _theme.textColor       = noti.userInfo[@"textColor"];
+    _theme.backgroundColor = noti.userInfo[@"backgroundColor"];
+    _theme.assistColor     = noti.userInfo[@"assistColor"];
+    _theme.navColor        = noti.userInfo[@"navColor"];
+}
 
 #pragma mark - UIPageViewControllerDelegate
 

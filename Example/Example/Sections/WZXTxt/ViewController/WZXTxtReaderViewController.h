@@ -15,6 +15,6 @@
 @property (nonatomic, strong) WZXTxtReaderTopView    * topView;
 @property (nonatomic, strong) WZXTxtReaderBottomView * bottomView;
 
-- (instancetype)initWithName:(NSString *)name;
+- (instancetype)initWithName:(NSString *)name path:(NSString *)path;
 @end
 

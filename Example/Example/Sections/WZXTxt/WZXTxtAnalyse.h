@@ -27,7 +27,7 @@
 - (instancetype)initWithBounds:(CGRect)bounds;
 
 // 分析
-- (void)contentWithName:(NSString *)name font:(UIFont *)font;
+- (void)contentWithName:(NSString *)name path:(NSString *)path font:(UIFont *)font;
 
 
 - (NSAttributedString *)txtWithPageNum:(NSUInteger)pageNum

@@ -12,17 +12,32 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self setUp];
+        [self createUI];
     }
     return self;
 }
 
-- (void)setUp {
-    self.backgroundColor = [UIColor whiteColor];
-    self.layer.shadowColor   = [UIColor grayColor].CGColor;
-    self.layer.shadowOffset  = CGSizeMake(0.5, 0.5);
-    self.layer.shadowRadius  = 3;
-    self.layer.shadowOpacity = 0.5;
+- (void)createUI {
+    _backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self addSubview:_backButton];
+    
+    [_backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(20);
+        make.left.equalTo(self);
+        make.width.equalTo(@(100));
+        make.bottom.equalTo(self);
+    }];
+    
+    UILabel * backLabel = [UILabel new];
+    [_backButton addSubview:backLabel];
+    
+    backLabel.text = @"返回";
+    backLabel.textColor = [UIColor blueColor];
+    [backLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_backButton);
+        make.left.equalTo(_backButton).offset(5);
+    }];
+    
 }
 
 

@@ -6,8 +6,10 @@
 //  Copyright © 2016年 WzxJiang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WZXNavigationView.h"
 
-@interface WZXTxtReaderTopView : UIView
+@interface WZXTxtReaderTopView : WZXNavigationView
+
+@property (nonatomic, strong) UIButton * backButton;
 
 @end

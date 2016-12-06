@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WZXTxtReaderViewController.h"
+#import "MainViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +20,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[WZXTxtReaderViewController alloc] initWithName:@"mdjyml"]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
     return YES;
 }
 

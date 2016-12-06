@@ -29,10 +29,9 @@
     return _name;
 }
 
-- (void)contentWithName:(NSString *)name font:(UIFont *)font {
+- (void)contentWithName:(NSString *)name path:(NSString *)path font:(UIFont *)font {
     _name = name;
     dispatch_async(dispatch_queue_create("WZX_TXT_QUEUE", DISPATCH_QUEUE_SERIAL), ^{
-        NSString * path = [[NSBundle mainBundle] pathForResource:name ofType:@"txt"];
         NSError * error;
         NSString * content = [NSString stringWithContentsOfFile:path encoding:0x80000632 error:&error];
         if (content == nil) {
@@ -61,7 +60,7 @@
             if (result.range.length > 0) {
                 if (result.range.location > 0) {
                     if (_lastLocal == 0) {
-                        [_chapterNames addObject:@"前言"];
+                        [_chapterNames addObject: _name];
                     }
                     
                     [attributedString setAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:20]} range:result.range];

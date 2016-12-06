@@ -13,7 +13,7 @@
 
 @end
 
-@implementation WZXTxtViewController 
+@implementation WZXTxtViewController
 
 - (void)setUp {
     _chapterLabel = [UILabel new];
@@ -34,6 +34,8 @@
     _textView = [UITextView new];
     [self.view addSubview:self.textView];
     
+    _textView.backgroundColor = [UIColor clearColor];
+    
     [_textView addGestureRecognizer:
      [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReaderAction:)]];
     
@@ -41,8 +43,8 @@
 //    _textView.scrollEnabled  = NO;
     [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_chapterLabel.mas_bottom).offset(5);
-        make.left.equalTo(self.view).offset(10);
-        make.right.equalTo(self.view).offset(-10);
+        make.centerX.equalTo(self.view);
+        make.size.mas_equalTo(BASE_TEXTVIEW_SIZE);
     }];
     
     _numLabel = [UILabel new];
@@ -51,7 +53,6 @@
     _numLabel.font      = [UIFont systemFontOfSize:10];
     _numLabel.textColor = [UIColor grayColor];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_textView.mas_bottom).offset(5);
         make.bottom.equalTo(self.view).offset(-5);
         make.right.equalTo(self.view).offset(-10);
     }];
@@ -59,6 +60,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeTheme:) name:@"WZXChangeThemeNotification" object:nil];
+}
+
+- (void)changeTheme:(NSNotification *)noti {
+    _theme.textColor = noti.userInfo[@"textColor"];
+    _theme.backgroundColor = noti.userInfo[@"backgroundColor"];
+    [self updateTheme];
+}
+
+- (void)updateTheme {
+    self.view.backgroundColor   = _theme.backgroundColor;
+    self.textView.textColor     = _theme.textColor;
+    self.numLabel.textColor     = _theme.assistColor;
+    self.chapterLabel.textColor = _theme.assistColor;
 }
 
 - (void)tapReaderAction:(UITapGestureRecognizer *)sender {
@@ -95,6 +110,8 @@
 
     _numLabel.text           =
     [NSString stringWithFormat:@"%lu/%lu", _pageModel.currentPageNum, _pageModel.allPageNums];
+    
+    [self updateTheme];
 }
 
 - (NSUInteger)pageNum {
